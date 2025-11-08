@@ -8,6 +8,7 @@
     <properties>
       <background color="-3090459"/>
       <foreground color="-66049"/>
+      <opaque value="true"/>
       <preferredSize width="800" height="600"/>
     </properties>
     <border type="none"/>
@@ -112,14 +113,14 @@
                   <visible value="true"/>
                 </properties>
               </component>
-              <component id="c2ce9" class="javax.swing.JLabel" binding="infoLabel">
+              <component id="c2ce9" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="Segoe UI Semilight" size="24"/>
                   <text value="Prepárate para sacar la mejor nota en los exámenes finales"/>
-                  <visible value="false"/>
+                  <visible value="true"/>
                 </properties>
               </component>
               <vspacer id="894f4">
@@ -136,14 +137,14 @@
           </grid>
         </children>
       </grid>
-      <grid id="687a7" binding="btnsPanel" layout-manager="GridLayoutManager" row-count="2" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="687a7" layout-manager="GridLayoutManager" row-count="2" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <opaque value="false"/>
-          <visible value="false"/>
+          <visible value="true"/>
         </properties>
         <border type="none"/>
         <children>
@@ -153,6 +154,7 @@
             </constraints>
             <properties>
               <background color="-10641717"/>
+              <contentAreaFilled value="true"/>
               <focusPainted value="false"/>
               <font size="16"/>
               <foreground color="-13421773"/>
