@@ -2,17 +2,18 @@ package model;
 
 import java.net.http.HttpResponse;
 
-public class UserRegister {
+public class UserLogin {
     BackendConnect backendConnect = new BackendConnect();
 
-    private final String url = backendConnect.getUrlBase() + "create";
+    private final String url = backendConnect.getUrlBase() + "login";
     private final HttpService httpService = new HttpService();
 
-    public int createUser(String name, String surname, String email, String pass, String formation) {
+
+    public int accessUser(String email, String pass) {
         try {
             String json = String.format(
-                    "{\"firstName\":\"%s\", \"surName\":\"%s\", \"email\":\"%s\", \"password\":\"%s\", \"study\":\"%s\"}",
-                    name, surname, email, pass, formation
+                    "{\"email\":\"%s\", \"password\":\"%s\"}",
+                    email, pass
             );
 
             HttpResponse<String> response = httpService.postJson(url, json);

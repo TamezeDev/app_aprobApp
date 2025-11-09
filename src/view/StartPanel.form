@@ -159,7 +159,7 @@
               <font size="16"/>
               <foreground color="-13421773"/>
               <margin top="20" left="15" bottom="20" right="15"/>
-              <text value="Nuevo Registo"/>
+              <text value="Nuevo Registro"/>
               <visible value="true"/>
             </properties>
           </component>

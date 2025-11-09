@@ -3,6 +3,7 @@ package controller;
 import view.LoginPanel;
 import view.RegisterPanel;
 import view.StartPanel;
+import view.UserPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class PanelController {
     private CardLayout cardLayout;
 
 
-    public void startUI(){
+    public void startUI() {
 
         //Ventana principal
         frame = new JFrame("main");
@@ -27,27 +28,36 @@ public class PanelController {
 
         //Crear los paneles
         StartPanel startPanel = new StartPanel(this);
-        LoginPanel loginPanel =  new LoginPanel(this);
+        LoginPanel loginPanel = new LoginPanel(this);
         RegisterPanel resgiterPanel = new RegisterPanel(this);
+        UserPanel userPanel = new UserPanel(this, loginPanel.getEmailUser());
 
         // Asignar nombres únicos
         cards.add(startPanel.getPanel(), "start");
         cards.add(loginPanel.getPanel(), "login");
         cards.add(resgiterPanel.getPanel(), "register");
+        cards.add(userPanel.getPanel(), "userMenu");
 
         //Iniciar por defecto el panel principal
         frame.setContentPane(cards);
         frame.pack();
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);}
+        frame.setVisible(true);
+    }
 
-        //Cambio de panel
-        public void showPanel(String namePanel){
-            cardLayout.show(cards, namePanel);
-        }
-        //Recuperar la referencia del frame
-        public  JFrame getFrame(){
+    //Cambio de panel
+    public void showPanel(String namePanel) {
+        cardLayout.show(cards, namePanel);
+    }
+
+    //Recuperar la referencia del frame
+    public JFrame getFrame() {
         return frame;
-        }
+    }
+    //Añadir paneles
+    public void addUserPanel(UserPanel userPanel) {
+        cards.add(userPanel.getPanel(), "userMenu");
+    }
+
 }
 
