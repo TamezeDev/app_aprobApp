@@ -1,7 +1,9 @@
 package view;
 
+import model.ReverseSpinnerListModel;
 import model.UserRegister;
 import controller.PanelController;
+import model.WindowUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,9 +19,15 @@ public class RegisterPanel {
     private JSpinner spFormacion;
     private JButton btnLimpiar;
     private JButton btnEnviar;
+    private JButton btnExit;
+    private JPanel mainBar;
+    private JButton btnMin;
 
     //main function
     public RegisterPanel(PanelController controller) {
+        WindowUtils.attachExitButton(btnExit);
+        WindowUtils.attachMinimizeButton(btnMin, this.getPanel());
+        WindowUtils.enableWindowDrag(mainBar);
         initListeners(controller);
         setBordersTxt();
         loadStudiesSpinner();
@@ -42,18 +50,18 @@ public class RegisterPanel {
             defEditor.getTextField().setBackground(bgColor);
             defEditor.getTextField().setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
             defEditor.getTextField().setForeground(Color.BLACK);
-            defEditor.getTextField().setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            defEditor.getTextField().setFont(new Font("Segoe UI", Font.PLAIN, 16));
         }
     }
 
     //load spinner list
     private void loadStudiesSpinner() {
-
         String[] formations = {"DAM", "DAW", "ASIR"};
-        SpinnerListModel model = new SpinnerListModel(formations);
+        ReverseSpinnerListModel model = new ReverseSpinnerListModel(formations);
         spFormacion.setModel(model);
         styleSpinner(spFormacion);
     }
+
 
     // design textFields borders
     private void setBordersTxt() {
@@ -139,17 +147,17 @@ public class RegisterPanel {
             return true;
         }
     }
-
+    //set border error
     private void setErrorBorder(JComponent comp, boolean error) {
         Color color = error ? Color.RED : Color.BLACK;
         comp.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, color));
     }
-
+    //validate email
     private boolean validEmail(String email) {
         return Pattern.matches("^[\\w._%+-]+@[\\w.-]+\\.[A-Za-z]{2,6}$", email);
     }
 
-
+    //validate password
     private boolean validPassword(String password) {
         // Al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo
         String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&._#()\\-])[A-Za-z\\d@$!%*?&._#()\\-]{8,}$";

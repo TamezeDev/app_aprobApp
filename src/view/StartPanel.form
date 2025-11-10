@@ -9,7 +9,7 @@
       <background color="-3090459"/>
       <foreground color="-66049"/>
       <opaque value="true"/>
-      <preferredSize width="800" height="600"/>
+      <preferredSize width="1024" height="700"/>
     </properties>
     <border type="none"/>
     <children>

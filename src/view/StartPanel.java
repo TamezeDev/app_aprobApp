@@ -1,6 +1,8 @@
 package view;
 
 import controller.PanelController;
+import model.WindowUtils;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -17,33 +19,11 @@ public class StartPanel {
 
     public StartPanel(PanelController controller) {
 
-        // Botón de salida
-        btnExit.addActionListener(e -> System.exit(0));
-
-        //Minimiza ventana
-        btnMin.addActionListener(e -> {
-            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(startPanel);
-            frame.setState(JFrame.ICONIFIED);
-        });
-
-        // Movimiento de ventana desde la barra
-        mainBar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                mouseX = e.getX();
-                mouseY = e.getY();
-            }
-        });
-
-        mainBar.addMouseMotionListener(new MouseMotionAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainBar);
-                frame.setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
-            }
-        });
-
-        //Navegar entre paneles
+        //MainBar utils
+        WindowUtils.attachExitButton(btnExit);
+        WindowUtils.attachMinimizeButton(btnMin, this.getPanel());
+        WindowUtils.enableWindowDrag(mainBar);
+        //Navegate others panels
         btnLogin.addActionListener(e -> controller.showPanel("login"));
         btnRegister.addActionListener(e -> controller.showPanel("register"));
     }

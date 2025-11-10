@@ -2,6 +2,7 @@ package view;
 
 import controller.PanelController;
 import model.UserLogin;
+import model.WindowUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,9 +16,15 @@ public class LoginPanel {
     private JPasswordField pass;
     private JButton btnBorrar;
     private JButton btnAcceder;
+    private JPanel mainBar;
+    private JButton btnExit;
+    private JButton btnMin;
 
     //Main function
     public LoginPanel(PanelController controller) {
+        WindowUtils.attachExitButton(btnExit);
+        WindowUtils.attachMinimizeButton(btnMin, this.getPanel());
+        WindowUtils.enableWindowDrag(mainBar);
         initListeners(controller);
         setBordersTxt();
     }
@@ -84,7 +91,6 @@ public class LoginPanel {
             emailUser = email;
             UserPanel userPanel = new UserPanel(controller, emailUser);
             controller.addUserPanel(userPanel);
-            System.out.println("Login con éxito");
             controller.showPanel("userMenu");
         }
     }

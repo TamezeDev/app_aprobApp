@@ -17,44 +17,44 @@ public class PanelController {
 
     public void startUI() {
 
-        //Ventana principal
+        //main Window
         frame = new JFrame("main");
         frame.setUndecorated(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Configurar CardLayout
+        // Config CardLayout
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
 
-        //Crear los paneles
+        //Create panels
         StartPanel startPanel = new StartPanel(this);
         LoginPanel loginPanel = new LoginPanel(this);
         RegisterPanel resgiterPanel = new RegisterPanel(this);
         UserPanel userPanel = new UserPanel(this, loginPanel.getEmailUser());
 
-        // Asignar nombres únicos
+        // Nombrate panels
         cards.add(startPanel.getPanel(), "start");
         cards.add(loginPanel.getPanel(), "login");
         cards.add(resgiterPanel.getPanel(), "register");
         cards.add(userPanel.getPanel(), "userMenu");
 
-        //Iniciar por defecto el panel principal
+        //Init default panel
         frame.setContentPane(cards);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
-    //Cambio de panel
+    //Change panel
     public void showPanel(String namePanel) {
         cardLayout.show(cards, namePanel);
     }
 
-    //Recuperar la referencia del frame
+    //Recover reference panel
     public JFrame getFrame() {
         return frame;
     }
-    //Añadir paneles
+    //Add new panel
     public void addUserPanel(UserPanel userPanel) {
         cards.add(userPanel.getPanel(), "userMenu");
     }
